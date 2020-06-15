@@ -6,7 +6,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.appcompat.app.AppCompatActivity
 import com.venado.test_server.R
 import com.venado.test_server.extensions.showToast
-import com.venado.test_server.server.ServerService
+import com.venado.test_server.service.ServerService
 
 class MainActivity : AppCompatActivity() {
 

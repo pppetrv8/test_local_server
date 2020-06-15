@@ -9,6 +9,7 @@ import timber.log.Timber
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import com.venado.test_server.ui.App
+import java.io.InputStream
 
 object AndroidUtil {
 
@@ -64,6 +65,17 @@ object AndroidUtil {
             Timber.e(e)
         }
         return sb.toString()
+    }
+
+    fun readAssetStream(context: Context?, fileName: String): InputStream? {
+        val manager = context?.assets
+        var iStream: InputStream? = null
+        try {
+            iStream = manager?.open(fileName)
+        } catch (e: Exception) {
+            Timber.e(e)
+        }
+        return iStream
     }
 
     fun printAppMemoryInfo(context: Context?) {

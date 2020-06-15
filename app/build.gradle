@@ -58,8 +58,8 @@ dependencies {
 
     // Local web server lib
     //implementation "org.http4k:http4k-core:3.250.0"
-
     implementation "com.sun.net.httpserver:http:20070405"
+    implementation 'org.nanohttpd:nanohttpd:2.3.1'
 
     // Android Room library
     implementation "androidx.room:room-runtime:$room_version"

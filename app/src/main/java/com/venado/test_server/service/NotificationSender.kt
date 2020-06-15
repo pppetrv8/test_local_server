@@ -1,4 +1,4 @@
-package com.venado.test_server.server
+package com.venado.test_server.service
 
 import android.annotation.TargetApi
 import android.app.Notification
@@ -46,7 +46,9 @@ class NotificationSender(val context: Context?,
         notificationIntent.flags = Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
         val contentIntent = PendingIntent.getActivity(ctx, 0, notificationIntent, 0)
 
-        val builder = NotificationCompat.Builder(ctx, APP_NOTIFICATION_CHANNEL)
+        val builder = NotificationCompat.Builder(ctx,
+            APP_NOTIFICATION_CHANNEL
+        )
             .setAutoCancel(true)
             .setContentIntent(contentIntent)
             .setSmallIcon(R.mipmap.ic_launcher)

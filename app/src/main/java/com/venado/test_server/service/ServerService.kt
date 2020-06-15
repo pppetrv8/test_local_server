@@ -1,10 +1,12 @@
-package com.venado.test_server.server
+package com.venado.test_server.service
 
 import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
+import com.venado.test_server.server.HttpServerHelper
+import com.venado.test_server.utils.Constants.HTTP_PORT
 
 class ServerService: Service() {
 
@@ -19,8 +21,11 @@ class ServerService: Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val result = super.onStartCommand(intent, flags, startId)
         runForeground()
-        httpServer = HttpServerHelper(this)
-        httpServer?.startServer("localhost", 8080)
+        httpServer =
+            HttpServerHelper.getHelper(
+                this
+            )
+        httpServer?.startServer(null, HTTP_PORT)
         isRunning = true
         return result
     }
@@ -32,13 +37,15 @@ class ServerService: Service() {
         httpServer?.clear()
         httpServer = null
         isRunning = false
-
     }
 
     private fun runForeground() {
         val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val notification = NotificationSender(this, manager).
-                            getAppNotification("Server started", "Service running in foreground", this, true)
+        val notification = NotificationSender(this, manager)
+            .getAppNotification(
+            "Server started",
+            "Service running in foreground",
+            this, true)
         startForeground(APP_NOTIFICATION_ID, notification)
     }
 
