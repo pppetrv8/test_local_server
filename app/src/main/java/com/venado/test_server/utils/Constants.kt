@@ -11,8 +11,6 @@ object Constants {
 
     const val SERVER_ROOT_CONTEXT = "/"
     const val SERVER_FILES_CONTEXT = SERVER_ROOT_CONTEXT + "files"
-
-    const val CONTENT_TYPE_MP4 = "video/mp4"
-    const val CONTENT_TYPE_JSON = "application/json"
-    const val CONTENT_TYPE_HTML = "text/html"
+    const val SERVER_API_CONTEXT = SERVER_ROOT_CONTEXT + "api"
+    const val SERVER_CONTENT_ROOT = "build"
 }
