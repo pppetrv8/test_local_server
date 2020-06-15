@@ -1,0 +1,154 @@
+{
+    "localizations": [
+        {
+            "signup_str": "SignUp"
+        },
+        {
+            "signup_msal_str": "SignUp Msal"
+        },
+        {
+            "retry_text": "Retry"
+        },
+        {
+            "ok_text": "OK"
+        },
+        {
+            "cancel_text": "Cancel"
+        },
+        {
+            "toolbar_title": "App Coach"
+        },
+        {
+            "err_msg": "There was error while loading data %s"
+        },
+        {
+            "err_connection_msg": "There is no Internet connection available. Please check your connection settings and try again."
+        },
+        {
+            "err_login_failed_msg": "Sorry. Login failed."
+        },
+        {
+            "err_session_expired_msg": "Your session has expired, please sign in again."
+        },
+        {
+            "err_mediaplayer_unsupported": "Video format is not supported."
+        },
+        {
+            "err_mediaplayer_render": "Problem with video rendering."
+        },
+        {
+            "scan_start_msg": "Scanner started."
+        },
+        {
+            "print_start_msg": "Printing started."
+        },
+        {
+            "scan_completed_msg": "Scan completed."
+        },
+        {
+            "print_completed_msg": "Print completed."
+        },
+        {
+            "err_system_msg": "There was error in request format."
+        },
+        {
+            "err_token_msg": "There was error in token parameter format."
+        },
+        {
+            "err_undefined_msg": "There was some undefined simulator error."
+        },
+        {
+            "welcome_login_str": "Login"
+        },
+        {
+            "welcome_text": "Welcome to the App Coach"
+        },
+        {
+            "welcome_please_login_text": "To begin, please login with your credentials."
+        },
+        {
+            "main_menu_logout_text": "Logout"
+        },
+        {
+            "main_menu_item_status_text": "Status:"
+        },
+        {
+            "main_menu_item_module_statistics_text": "%s Walk-Throughs | %s Practice Runs | %s Assessments | %s Videos"
+        },
+        {
+            "main_menu_item_walk_throughs_text": "Walk-Throughs: %s Completed"
+        },
+        {
+            "main_menu_item_walk_throughs_descr": "A step-by-step instructional guide on how to complete module tasks."
+        },
+        {
+            "main_menu_item_practices_text": "Practices: %s Completed"
+        },
+        {
+            "main_menu_item_practices_descr": "A mode that allows you to practice tasks with minimal guidance."
+        },
+        {
+            "main_menu_item_assessments_text": "Assessments: %s Completed"
+        },
+        {
+            "main_menu_item_assessments_descr": "Tests that assess your competency for completing tasks with no guidance."
+        },
+        {
+            "main_menu_item_videos_text": "Videos: %s Completed"
+        },
+        {
+            "main_menu_item_videos_descr": "Instructional videos that give a bit more in-depth information."
+        },
+        {
+            "main_menu_no_lessons_text": "No lessons available."
+        },
+        {
+            "err_user_story_not_exist_title": "Lesson does not exist"
+        },
+        {
+            "err_user_story_not_exist_msg": "Sorry, this lesson does not longer exist."
+        },
+        {
+            "err_user_story_updated_title": "Lesson has been updated"
+        },
+        {
+            "err_user_story_updated_msg": "This lesson has been updated. To complete the lesson, you need to pass it again."
+        },
+        {
+            "note_user_story_changed_text": "Please note: the list of lessons has been changed."
+        },
+        {
+            "err_user_story_not_exist_text": "Sorry, lesson \"%s\" does not longer exist."
+        },
+        {
+            "err_user_story_mode_not_avail_msg": "Mode is not available."
+        },
+        {
+            "err_app_not_avail_msg": "The app content is no longer available. Please refresh the screen."
+        },
+        {
+            "qr_scanner_title_text": "Scan QR Code"
+        },
+        {
+            "qr_scanner_title_existing_text": "Scan Existing QR Code"
+        },
+        {
+            "qr_scanner_cancel_text": "Cancel"
+        },
+        {
+            "welcome_title_1": "On Demand"
+        },
+        {
+            "welcome_title_2": "On Device"
+        },
+        {
+            "welcome_title_3": "App Training Simulator"
+        },
+        {
+            "welcome_description": "Learn and practice how to use the apps you need to do your job in a anxiety free and self-paced manner. No need to worry about breaking anything."
+        },
+        {
+            "login_button": "GET STARTED"
+        }
+    ]
+}

@@ -19,7 +19,7 @@ class ServerService: Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val result = super.onStartCommand(intent, flags, startId)
         runForeground()
-        httpServer = HttpServerHelper()
+        httpServer = HttpServerHelper(this)
         httpServer?.startServer("localhost", 8080)
         isRunning = true
         return result

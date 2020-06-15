@@ -1,15 +1,22 @@
 package com.venado.test_server.server
 
+import android.content.Context
 import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpHandler
 import com.sun.net.httpserver.HttpServer
-import com.venado.test_server.utils.StringUtils
-import org.json.JSONObject
+import com.venado.test_server.utils.AndroidUtil.readAsset
+import com.venado.test_server.utils.Constants.CONTENT_TYPE_HTML
+import com.venado.test_server.utils.Constants.CONTENT_TYPE_JSON
+import com.venado.test_server.utils.Constants.CONTENT_TYPE_MP4
+import com.venado.test_server.utils.Constants.HEADER_CONTENT_TYPE
+import com.venado.test_server.utils.Constants.OK_CODE
+import com.venado.test_server.utils.Constants.SERVER_FILES_CONTEXT
+import com.venado.test_server.utils.Constants.SERVER_ROOT_CONTEXT
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.util.concurrent.Executors
 
-class HttpServerHelper {
+class HttpServerHelper(val context: Context) {
 
     private var mHttpServer: HttpServer? = null
     private val executor = Executors.newCachedThreadPool()
@@ -20,28 +27,12 @@ class HttpServerHelper {
             // Get request method
             when (exchange?.requestMethod) {
                 "GET" -> {
-                    sendResponse(exchange, "Welcome to my server")
-                }
-            }
-        }
-    }
-
-    private val messageHandler = HttpHandler { httpExchange ->
-        run {
-            when (httpExchange!!.requestMethod) {
-                "GET" -> {
-                    // Get all messages
-                    sendResponse(httpExchange, "Would be all messages stringified json")
-                }
-                "POST" -> {
-                    val inputStream = httpExchange.requestBody
-
-                    val requestBody = StringUtils.streamToString(inputStream)
-                    val jsonBody = JSONObject(requestBody)
-                    // save message to database
-
-                    //for testing
-                    sendResponse(httpExchange, jsonBody.toString())
+                    val uri = exchange?.requestURI
+                    if (uri.path == SERVER_FILES_CONTEXT) {
+                        //sendFileResponse(exchange, "test_video.mp4", CONTENT_TYPE_MP4)
+                        //sendFileResponse(exchange, "def_vcb_localizations.json", CONTENT_TYPE_JSON)
+                        sendFileResponse(exchange, "html_test.html", CONTENT_TYPE_HTML)
+                    } else sendResponse(exchange, "Welcome to my server")
                 }
             }
         }
@@ -67,10 +58,9 @@ class HttpServerHelper {
         try {
             mHttpServer = HttpServer.create(InetSocketAddress(hostAddress, port), 0)
             mHttpServer?.executor = Executors.newCachedThreadPool()
-            mHttpServer?.createContext("/", rootHandler)
+            mHttpServer?.createContext(SERVER_ROOT_CONTEXT, rootHandler)
             // 'this' refers to the handle method
-            mHttpServer?.createContext("/index", rootHandler)
-            mHttpServer?.createContext("/messages", messageHandler)
+            mHttpServer?.createContext(SERVER_FILES_CONTEXT, rootHandler)
             mHttpServer?.start() //start server;
             println("Server is running on ${mHttpServer?.address}:$port")
         } catch (e: IOException) {
@@ -83,8 +73,20 @@ class HttpServerHelper {
     }
 
 
+    private fun sendFileResponse(httpExchange: HttpExchange, fileName: String, mimeType: String) {
+        val os = httpExchange.responseBody
+        val fileStr = readAsset(context, fileName)
+        val fileBytes = fileStr.toByteArray()
+        httpExchange.setAttribute(HEADER_CONTENT_TYPE, mimeType)
+        httpExchange.responseHeaders.add("Content-Disposition", "attachment; filename=" + fileName)
+        httpExchange.sendResponseHeaders(OK_CODE, fileBytes.size.toLong())
+        os.write(fileBytes)
+        os.flush()
+        os.close()
+    }
+
     private fun sendResponse(httpExchange: HttpExchange, responseText: String){
-        httpExchange.sendResponseHeaders(200, responseText.length.toLong())
+        httpExchange.sendResponseHeaders(OK_CODE, responseText.length.toLong())
         val os = httpExchange.responseBody
         os.write(responseText.toByteArray())
         os.close()

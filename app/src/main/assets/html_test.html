@@ -1,0 +1,21 @@
+﻿<html lang="ru-RU">
+<head><meta charset="utf-8">Test</head>
+<body>
+<div>
+   <button type="button" id="test-handle-event-id" style="font-weight: 700; margin-right: 20px;" onclick="testHandleEvent();">Test Handle Event</button>
+</div>
+<script>
+   function testHandleEvent() {
+       type = "START_MODE"
+       currentStepId = "f56239df-f511-4c25-1ea1-08d697de86d2"
+       controlId = 'test'
+       publishDatetimestamp = 1551124929918
+       publishDatetimestamp = Number.parseFloat(publishDatetimestamp).toFixed(0)
+
+       android.handleEvent(type, currentStepId, controlId, publishDatetimestamp);
+       return true
+   }
+
+</script>
+</body>
+</html>
